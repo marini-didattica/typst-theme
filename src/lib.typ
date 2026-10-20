@@ -13,6 +13,10 @@
 
 #let font-mono = "DejaVu Sans Mono"
 
+/// Text of the last level-1 heading. Components use it to group automatic
+/// summaries by the section they appear in.
+#let sezione-corrente = state("sezione-corrente", none)
+
 /// Small uppercase label used above values and sections.
 #let etichetta(txt) = text(
   size: 7.6pt,
@@ -88,33 +92,37 @@
     )[#it]
   ]
 
-  show heading.where(level: 1): it => block(
-    above: 1.4em,
-    below: 1em,
-    width: 100%,
-  )[
-    #stack(
-      dir: ttb,
-      spacing: 0.35em,
-      grid(
-        columns: (auto, 1fr),
-        column-gutter: 9pt,
-        align: horizon,
-        box(
-          fill: palette.accent,
-          inset: (x: 7pt, y: 4pt),
-          radius: 3pt,
-          baseline: 32%,
-        )[
-          #text(fill: white, weight: 800, size: 12pt)[
-            #counter(heading).display()
-          ]
-        ],
-        text(size: 17pt, weight: 800, fill: palette.ink)[#it.body],
-      ),
-      line(length: 100%, stroke: 2.2pt + palette.accent),
-    )
-  ]
+  show heading.where(level: 1): it => {
+    sezione-corrente.update(_ => it.body)
+
+    block(
+      above: 1.4em,
+      below: 1em,
+      width: 100%,
+    )[
+      #stack(
+        dir: ttb,
+        spacing: 0.35em,
+        grid(
+          columns: (auto, 1fr),
+          column-gutter: 9pt,
+          align: horizon,
+          box(
+            fill: palette.accent,
+            inset: (x: 7pt, y: 4pt),
+            radius: 3pt,
+            baseline: 32%,
+          )[
+            #text(fill: white, weight: 800, size: 12pt)[
+              #counter(heading).display()
+            ]
+          ],
+          text(size: 17pt, weight: 800, fill: palette.ink)[#it.body],
+        ),
+        line(length: 100%, stroke: 2.2pt + palette.accent),
+      )
+    ]
+  }
 
   body
 }

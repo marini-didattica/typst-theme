@@ -3,9 +3,11 @@
 Shared colours, typography, page setup, code-block styling and heading style
 for the Liceo Russell Typst materials.
 
-The package exports `palette`, `font-mono`, `etichetta` and `theme`. Links are
-rendered as inline monospace “verb” chips: code background, thin border, and
-accent-coloured text, while remaining clickable.
+The package exports `palette`, `font-mono`, `etichetta`, `sezione-corrente` and
+`theme`. `sezione-corrente` is updated by the level-1 heading show rule so other
+packages can group content by the section it appears in. Links are rendered as
+inline monospace “verb” chips: code background, thin border, and accent-coloured
+text, while remaining clickable.
 
 ## Usage
 
