@@ -62,7 +62,7 @@
   show raw.where(block: true): it => block(
     width: 100%,
     fill: palette.code-bg,
-    radius: 4pt,
+    radius: 3pt,
     inset: (x: 10pt, y: 9pt),
     outset: (y: 3pt),
     stroke: none,
@@ -78,7 +78,7 @@
   show link: it => highlight(
     fill: palette.code-bg,
     stroke: 0.4pt + luma(200),
-    radius: 2pt,
+    radius: 3pt,
     extent: 2pt,
   )[
     #text(
@@ -103,7 +103,7 @@
         box(
           fill: palette.accent,
           inset: (x: 7pt, y: 4pt),
-          radius: 4pt,
+          radius: 3pt,
           baseline: 32%,
         )[
           #text(fill: white, weight: 800, size: 12pt)[
