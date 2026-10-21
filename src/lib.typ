@@ -13,6 +13,28 @@
 
 #let font-mono = "DejaVu Sans Mono"
 
+/// Shared vertical rhythm.
+///
+/// Flowing content uses the `em`-based scale (`xs` … `xxl`); fixed page
+/// furniture (cover, footer, answer lines) uses the absolute `page` scale.
+/// Components should use these tokens instead of ad-hoc `#v(...)` values.
+#let spazio = (
+  xs: 0.25em,
+  sm: 0.45em,
+  md: 0.65em,
+  lg: 0.9em,
+  xl: 1.5em,
+  xxl: 2em,
+  page: (
+    xs: 4pt,
+    sm: 8pt,
+    md: 12pt,
+    lg: 16pt,
+    xl: 20pt,
+    xxl: 28pt,
+  ),
+)
+
 /// Text of the last level-1 heading. Components use it to group automatic
 /// summaries by the section they appear in.
 #let sezione-corrente = state("sezione-corrente", none)
@@ -43,7 +65,7 @@
         #set text(size: 8.5pt, fill: luma(140))
         #stack(
           dir: ttb,
-          spacing: 7pt,
+          spacing: spazio.page.sm,
           line(length: 100%, stroke: 0.5pt + luma(225)),
           align(center)[
             #footer-text #h(10pt)·#h(10pt) #counter(page).display()
@@ -59,7 +81,7 @@
   set list(
     marker: (text(fill: palette.accent)[•],),
     indent: 1em,
-    spacing: 0.7em,
+    spacing: spazio.md,
   )
   set raw(tab-size: 4)
 
@@ -96,13 +118,13 @@
     sezione-corrente.update(_ => it.body)
 
     block(
-      above: 1.4em,
-      below: 1em,
+      above: spazio.xl,
+      below: spazio.lg,
       width: 100%,
     )[
       #stack(
         dir: ttb,
-        spacing: 0.35em,
+        spacing: spazio.page.md,
         grid(
           columns: (auto, 1fr),
           column-gutter: 9pt,

@@ -3,11 +3,15 @@
 Shared colours, typography, page setup, code-block styling and heading style
 for the Liceo Russell Typst materials.
 
-The package exports `palette`, `font-mono`, `etichetta`, `sezione-corrente` and
-`theme`. `sezione-corrente` is updated by the level-1 heading show rule so other
-packages can group content by the section it appears in. Links are rendered as
-inline monospace “verb” chips: code background, thin border, and accent-coloured
-text, while remaining clickable.
+The package exports `palette`, `font-mono`, `etichetta`, `sezione-corrente`,
+`spazio` and `theme`. `sezione-corrente` is updated by the level-1 heading show
+rule so other packages can group content by the section it appears in. `spazio`
+is the shared vertical rhythm: `xs` … `xxl` are `em`-based tokens for flowing
+content, while `spazio.page.xs` … `spazio.page.xxl` are absolute tokens for
+fixed page furniture such as the cover, footer and answer lines. Components
+should use these tokens instead of ad-hoc vertical spacing. Links are rendered
+as inline monospace “verb” chips: code background, thin border, and
+accent-coloured text, while remaining clickable.
 
 ## Usage
 
@@ -30,4 +34,5 @@ typst compile --root . path/to/document.typ
 
 This repository is designed to sit side by side with
 [`typst-components`](https://github.com/marini-didattica/typst-components).
-The `misc` and `riservato` repositories consume both as git submodules.
+The `materiale` repository consumes both as git submodules; `misc` and
+`riservato` are legacy.
